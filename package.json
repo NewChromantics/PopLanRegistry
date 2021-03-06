@@ -1,0 +1,25 @@
+{
+  "name": "@newchromantics/poplanregistry",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "version": "0.0.1",
+  "main": "NodeServer.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewChromantics/xxx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NewChromantics/xxx/issues"
+  },
+  "homepage": "https://github.com/NewChromantics/xxx#readme"
+}
