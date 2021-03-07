@@ -84,9 +84,31 @@ class TRegistryEntry
 	{
 		this.UpdateTimeouts();
 		
+		const Now = GetTimeNowMs();
+
+		function EntryToStruct(AddressAndRegisterTime)
+		{
+			const Output = {};
+			Output.Address = AddressAndRegisterTime[0];
+			const RegisterTime = AddressAndRegisterTime[1];
+			Output.Elapsed = Now - RegisterTime;
+			return Output;
+		}
+		
+		function CompareNewestStruct(a,b)
+		{
+			if ( a.Elapsed < b.Elapsed )
+				return -1;
+			if ( a.Elapsed > b.Elapsed )
+				return 1;
+			return 0;
+		}
+		
+		//	turn the data into entries so we can sort them
+		const SortedAddresses = Object.entries(this.LanAddresses).map(EntryToStruct).sort(CompareNewestStruct);
+		
 		const List = {};
-		const Addresses = Object.keys(this.LanAddresses);
-		List.Addresses = Addresses;
+		List.Addresses = SortedAddresses;
 		return List;
 	}
 	
