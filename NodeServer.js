@@ -61,7 +61,9 @@ const HttpServer = HttpServerApp.listen( ListenPort, () => console.log( `http se
 
 function GetTimeNowMs()
 {
-	new Date().getTime();
+	//	time in ms
+	const NowMs = new Date().getTime();
+	return NowMs;
 }
 
 
