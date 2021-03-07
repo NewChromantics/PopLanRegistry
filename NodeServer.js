@@ -3,6 +3,7 @@
 //const WebSocketModule = require('ws');
 const Pop = require('./PopApi');
 const ExpressModule = require('express');
+const RequestIp = require('request-ip');
 
 
 function NumberOrNull(Value,Name)
@@ -156,7 +157,10 @@ function GetExternalAddress(Request)
 	//const Address = `${Request.connection.remoteAddress}`;
 	//	express has just .ip
 	//	http://expressjs.com/en/api.html#req.ip
-	const Address = `${Request.ip}`;
+	//	gr: this seems to be an internal ip (different for secure & insecure on sloppy.io, so not external)
+	//const Address = `${Request.ip}`;
+	const Address = RequestIp.getClientIp(Request); 
+	console.log(`external address resolved to ${Address} Request.ip=${Request.ip} Request.connection.remoteAddress=${Request.connection.remoteAddress}`);
 	return Address;
 }
 
